@@ -1,73 +1,55 @@
 package br.nom.bicudo.bruno;
 
-import java.util.concurrent.atomic.AtomicLong;
-
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.nom.bicudo.bruno.exceptions.UnsupportedMathOperationException;
+import br.nom.bicudo.bruno.helpers.InputValidator;
+import br.nom.bicudo.bruno.helpers.MathOperations;
+import br.nom.bicudo.bruno.helpers.NumberConverter;
 
 @RestController
 public class MathController {
 	
-	private static final String template = "Hello, %s!";
-	private final AtomicLong counter = new AtomicLong();
+	private MathOperations mathOperations = new MathOperations();
 	
-	@RequestMapping(value = "/calculate/{operation}/{numberOne}/{numberTwo}", method=RequestMethod.GET)
+	@GetMapping("/sum/{numberOne}/{numberTwo}")
 	public Double sum(
-		@PathVariable(value = "operation") String operation,
-		@PathVariable(value = "numberOne") String numberOne,
-		@PathVariable(value = "numberTwo") String numberTwo
+		@PathVariable String numberOne,
+		@PathVariable String numberTwo
 	) throws Exception {
-		if (
-			!isNumeric(numberOne) ||
-			!isNumeric(numberTwo)
-		) {
-			throw new UnsupportedMathOperationException("Please inform the correct values in the order '/<operation>/<numberOne>/<numberTwo>'!");
-		}
-		return calculate(operation, convertToDouble(numberOne), convertToDouble(numberTwo));
+		InputValidator.checkSupportedValues(numberOne, numberTwo);
+
+		return mathOperations.sum(NumberConverter.convertToDouble(numberOne), NumberConverter.convertToDouble(numberTwo));
 	}
 
-
-	private Double calculate(String op, double n1, double n2) {
-		switch(op) {
-			case "sum":
-				return n1+n2;
-			case "sub":
-				return n1-n2;
-			case "mult":
-				return n1*n2;
-			case "div":
-				return n1/n2;
-			default:
-				throw new UnsupportedMathOperationException("Valid operations are 'sum', 'sub', 'mult', 'div'!");
-		}
+	@GetMapping("/sub/{numberOne}/{numberTwo}")
+	public Double sub(
+		@PathVariable String numberOne,
+		@PathVariable String numberTwo
+	) throws Exception {
+		InputValidator.checkSupportedValues(numberOne, numberTwo);
+		
+		return mathOperations.sub(NumberConverter.convertToDouble(numberOne), NumberConverter.convertToDouble(numberTwo));
 	}
 
-
-	private Double convertToDouble(String strNumber) {
-		if (strNumber == null) { 
-			return 0D;
-		}
-		String number = strNumber.replaceAll(",", ".");
-
-		if (isNumeric(number)) {
-			return Double.parseDouble(number);
-		}
+	@GetMapping("/mult/{numberOne}/{numberTwo}")
+	public Double mult(
+		@PathVariable String numberOne,
+		@PathVariable String numberTwo
+	) throws Exception {
+		InputValidator.checkSupportedValues(numberOne, numberTwo);
 		
-		return 0D;
+		return mathOperations.mult(NumberConverter.convertToDouble(numberOne), NumberConverter.convertToDouble(numberTwo));
 	}
 
-	private boolean isNumeric(String strNumber) {
-		if (strNumber == null) { 
-			return false;
-		}
+	@GetMapping("/div/{numberOne}/{numberTwo}")
+	public Double div(
+		@PathVariable String numberOne,
+		@PathVariable String numberTwo
+	) throws Exception {
+		InputValidator.checkSupportedValues(numberOne, numberTwo);
 		
-		String number = strNumber.replaceAll(",", ".");
-		
-		return number.matches("[-+]?[0-9]*\\.?[0-9]+");
+		return mathOperations.div(NumberConverter.convertToDouble(numberOne), NumberConverter.convertToDouble(numberTwo));
 	}
 }

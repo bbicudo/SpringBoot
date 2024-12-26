@@ -4,8 +4,9 @@ Este é um projeto desenvolvido como parte de um curso na Udemy, com o objetivo 
 
 ## 📚 Tecnologias e Ferramentas Utilizadas
 
-- **Java**: Linguagem de programação para desenvolvimento do backend.
-- **Spring Boot**: Framework para criação de aplicações Java com rapidez e eficiência.
+- **Java 23**: Linguagem de programação para desenvolvimento do backend.
+- **Spring Boot 3.4.1**: Framework para criação de aplicações Java com rapidez e eficiência.
+- **Maven 4**: Gerenciador de dependências e build.
 - **STS (Spring Tool Suite)**: IDE para facilitar o desenvolvimento em Spring.
 - **Postman**: Ferramenta para testar e documentar APIs.
 - **Swagger**: Ferramenta para documentação interativa de APIs.
@@ -23,3 +24,12 @@ O projeto utiliza princípios REST para criar endpoints eficientes e claros, com
 - `PUT`: Atualização completa de recursos.
 - `PATCH`: Atualização parcial de recursos.
 - `DELETE`: Remoção de recursos.
+
+## 🛠️ Atividades
+
+- Criação de APIs RESTful com Spring Boot.
+- Gerenciamento de dependências e builds com Maven 4.
+- Documentação automática das APIs utilizando Swagger.
+- Testes das APIs com Postman.
+- Integração de contêineres utilizando Docker e Docker Compose.
+- Controle de versão e colaboração com Git.

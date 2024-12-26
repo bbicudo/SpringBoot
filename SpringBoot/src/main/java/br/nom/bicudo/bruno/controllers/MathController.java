@@ -1,4 +1,4 @@
-package br.nom.bicudo.bruno;
+package br.nom.bicudo.bruno.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

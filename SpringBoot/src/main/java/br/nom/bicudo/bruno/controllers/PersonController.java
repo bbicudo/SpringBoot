@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.nom.bicudo.bruno.model.Person;
+import br.nom.bicudo.bruno.data.vo.v1.PersonVO;
 import br.nom.bicudo.bruno.services.PersonServices;
 
 @RestController
@@ -29,14 +29,14 @@ public class PersonController {
 		value = "/{id}",
 		produces = MediaType.APPLICATION_JSON_VALUE
 	)
-	public Person findById(
+	public PersonVO findById(
 		@PathVariable Long id
 	) {
 		return service.findById(id);
 	}
 
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Person> findAll(){
+	public List<PersonVO> findAll(){
 		return service.findAll();
 	}
 	
@@ -44,8 +44,8 @@ public class PersonController {
 		produces = MediaType.APPLICATION_JSON_VALUE,
 		consumes = MediaType.APPLICATION_JSON_VALUE
 	)
-	public Person create(
-		@RequestBody Person person
+	public PersonVO create(
+		@RequestBody PersonVO person
 	){
 		return service.create(person);
 	}
@@ -54,8 +54,8 @@ public class PersonController {
 		produces = MediaType.APPLICATION_JSON_VALUE,
 		consumes = MediaType.APPLICATION_JSON_VALUE
 	)
-	public Person update(
-			@RequestBody Person person
+	public PersonVO update(
+			@RequestBody PersonVO person
 			){
 		return service.update(person);
 	}

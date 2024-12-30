@@ -1,3 +1,14 @@
-server:
-  address: 0.0.0.0
-  port: 8080
+spring:
+  profiles:
+    active:
+    - default
+  datasource:
+    url: jdbc:mysql://mysql:3306/springboot?useTimezone=true&serverTimezone=UTC
+    username: root
+    password: admin123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    open-in-view: false
+    show-sql: false
+    hibernate:
+      ddl-auto: update

@@ -1,5 +1,6 @@
 package br.nom.bicudo.bruno.services;
 
+
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -12,6 +13,7 @@ import br.nom.bicudo.bruno.repositories.PersonRepository;
 
 @Service
 public class PersonServices {
+
 
 	private Logger logger = Logger.getLogger(PersonServices.class.getName());
 	
@@ -27,6 +29,7 @@ public class PersonServices {
 	public Person create(Person person) {
 		logger.info("Creating a person");
 
+
 		return repository.save(person);
 	}
 	
@@ -39,6 +42,7 @@ public class PersonServices {
 		person.setAddress("Bragança Paulista - SP - BR");
 		person.setGender("Male");
 		
+
 		return repository.findById(id)
 			.orElseThrow(() -> new ResourceNotFoundException("No records found for this id."));
 	}

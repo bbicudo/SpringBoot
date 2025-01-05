@@ -1,6 +1,6 @@
 # Spring Boot Project 🚀
 
-Este é um projeto desenvolvido como parte de um curso na Udemy, com o objetivo de praticar e consolidar conhecimentos em Spring Boot, desenvolvimento de APIs RESTful e diversas ferramentas relacionadas.
+Este é um projeto desenvolvido como parte de um curso na Udemy (https://uciandt.udemy.com/course/restful-apis-do-0-a-nuvem-com-springboot-e-docker/), com o objetivo de praticar e consolidar conhecimentos em Spring Boot, desenvolvimento de APIs RESTful e diversas ferramentas relacionadas.
 
 ## 📚 Tecnologias e Ferramentas Utilizadas
 

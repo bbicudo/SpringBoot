@@ -4,6 +4,7 @@ package br.nom.bicudo.bruno.services;
 import java.util.List;
 import java.util.logging.Logger;
 
+import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import br.nom.bicudo.bruno.controllers.PersonController;
 import br.nom.bicudo.bruno.data.vo.v1.PersonVO;
+import br.nom.bicudo.bruno.exceptions.RequiredObjectIsNullException;
 import br.nom.bicudo.bruno.exceptions.ResourceNotFoundException;
 import br.nom.bicudo.bruno.mapper.DozerMapper;
 import br.nom.bicudo.bruno.model.Person;
@@ -36,6 +38,10 @@ public class PersonServices {
 	}
 
 	public PersonVO create(PersonVO person) {
+		if (person == null) {
+			throw new RequiredObjectIsNullException();
+		}
+
 		logger.info("Creating a person");
 
 		var entity = DozerMapper.parseObject(person, Person.class);
@@ -60,6 +66,10 @@ public class PersonServices {
 	}
 
 	public PersonVO update(PersonVO person) {
+		if (person == null) {
+			throw new RequiredObjectIsNullException();
+		}
+
 		logger.info("Updating a person");
 		
 		var entity = repository.findById(person.getKey())

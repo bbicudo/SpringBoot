@@ -1,0 +1,51 @@
+services:
+  springboot-docker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: springboot-docker
+    networks:
+      - app-network
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_NAME=springboot
+      - DB_USER=admin
+      - DB_PASSWORD=admin123
+    depends_on:
+      - mysql
+    volumes:
+      - /home/brunobb/SpringBoot/app:/app
+    working_dir: /app/SpringBoot
+    command: /bin/bash -c "mvn clean package && mvn clean install -U && mvn validate && mvn spring-boot:run -X"
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    restart: always
+    networks:
+      - app-network
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: admin123
+      MYSQL_DATABASE: springboot
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin123
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 30s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+
+volumes:
+  mysql-data:
+
+networks:
+  app-network:
+    driver: bridge

@@ -1,3 +1,5 @@
+[![Springboot CI](https://github.com/bbicudo/SpringBoot/actions/workflows/maven.yml/badge.svg?branch=main)](https://github.com/bbicudo/SpringBoot/actions/workflows/maven.yml)
+
 # Spring Boot Project 🚀
 
 Este é um projeto desenvolvido como parte de um curso na Udemy (https://uciandt.udemy.com/course/restful-apis-do-0-a-nuvem-com-springboot-e-docker/), com o objetivo de praticar e consolidar conhecimentos em Spring Boot, desenvolvimento de APIs RESTful e diversas ferramentas relacionadas.

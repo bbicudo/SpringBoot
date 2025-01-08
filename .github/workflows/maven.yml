@@ -44,7 +44,9 @@ jobs:
         cache: maven
     - name: Build with Maven
       working-directory: ./SpringBoot
-      run: SPRING_PROFILES_ACTIVE=test mvn -B package --file pom.xml
+      run: |
+        cd ./SpringBoot
+        SPRING_PROFILES_ACTIVE=test mvn -B package --file pom.xml
 
     - name: List files in SpringBoot directory
       run: ls -al ./SpringBoot

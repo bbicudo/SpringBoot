@@ -8,6 +8,10 @@
 
 name: Java CI with Maven
 
+permissions:
+  id-token: write
+  attestations: write
+
 on:
   push:
     branches: [ "main" ]
@@ -45,3 +49,8 @@ jobs:
     - name: Build with Maven
       working-directory: ./SpringBoot
       run: SPRING_PROFILES_ACTIVE=test mvn -B package --file pom.xml
+
+    - name: Attest Build
+      uses: actions/attest-build-provenance@v2
+      with:
+        subject-path: /home/runner/work/SpringBoot/SpringBoot/SpringBoot/target/SpringBoot-*

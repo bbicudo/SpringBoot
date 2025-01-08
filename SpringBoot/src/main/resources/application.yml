@@ -1,7 +1,7 @@
 spring:
-  profiles:
-    active:
-    - default
+  config:
+    activate:
+      on-profile: default
   datasource:
     url: jdbc:mysql://mysql:3306/springboot?useTimezone=true&serverTimezone=UTC
     username: root
@@ -12,6 +12,25 @@ spring:
     show-sql: false
     hibernate:
       ddl-auto: none
+springdoc:
+    pathsToMatch: /api/**/v1/**
+    swagger-ui:
+      use-root-path: true
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+  datasource:
+    url: jdbc:mysql://localhost:3306/springboot?useTimezone=true&serverTimezone=UTC
+    username: root
+    password: admin123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    open-in-view: false
+    show-sql: false
+    hibernate:
+      ddl-auto: update
 springdoc:
     pathsToMatch: /api/**/v1/**
     swagger-ui:

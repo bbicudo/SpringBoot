@@ -17,9 +17,12 @@ import org.springframework.web.bind.annotation.RestController;
 import br.nom.bicudo.bruno.data.vo.v1.PersonVO;
 import br.nom.bicudo.bruno.services.PersonServices;
 import br.nom.bicudo.bruno.util.MediaType;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("/api/person/v1")
+@Tag(name = "People", description = "Endpoints for Managing People")
 public class PersonController {
 	
 	@Autowired
@@ -36,6 +39,7 @@ public class PersonController {
 	}
 
 	@GetMapping(produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YAML })
+	@Operation(summary = )
 	public List<PersonVO> findAll(){
 		return service.findAll();
 	}

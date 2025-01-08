@@ -30,6 +30,7 @@ jobs:
     - name: Get Directories
       run: ls -R
     - name: Clean build
+      working-directory: SpringBoot
       run: mvn clean
     - name: Build with Maven
       working-directory: SpringBoot

@@ -1,4 +1,4 @@
-
+[![Spring Boot CI](https://github.com/bbicudo/SpringBoot/actions/workflows/maven.yml/badge.svg?branch=main)](https://github.com/bbicudo/SpringBoot/actions/workflows/maven.yml)
 
 # Spring Boot Project 🚀
 

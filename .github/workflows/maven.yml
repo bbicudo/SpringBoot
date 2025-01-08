@@ -27,6 +27,8 @@ jobs:
         java-version: '23'
         distribution: 'temurin'
         cache: maven
+    - name: Get Directories
+      run: ls -R
     - name: Clean build
       run: mvn clean
     - name: Build with Maven

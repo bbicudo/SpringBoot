@@ -29,7 +29,7 @@ jobs:
           MYSQL_DATABASE: springboot
         options: >-
           --health-cmd="mysqladmin ping -h localhost -u root --password=root"
-          --health-interval=10s
+          --health-interval=30s
           --health-timeout=5s
           --health-retries=3
 
